@@ -1,0 +1,10 @@
+<h1>Add a new post</h1>
+<p>Find me in app/views/posts/new.html.erb</p>
+
+<form action="/posts" method="post">  
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">  
+	<input type="text" name="name" placeholder="name" /><br> 
+	<!-- <input type="text" name="content" placeholder="content" />   -->
+	<textarea name="content" placeholder="content" ></textarea><br>  
+	<input type="submit" value="Submit new post" />
+</form>
