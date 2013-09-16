@@ -1,18 +1,18 @@
-<h1>Account created!</h1>
+<h1>User detail</h1>
 
-<h2><%=flash[:notice] %></h2>
+<h2><i><%=flash[:notice] %></i></h2>
 
 <table class="users">
 	<tr>
+		<th>ID</th>
 		<th>First Name</th>
 		<th>Last Name</th>
 		<th>Email Address</th>
 	</tr>
-		<tr>		
+		<tr>
+			<td><%= @user['id'] %></td>		
 		    <td><%= @user['first_name'] %></td>
 		    <td><%= @user['last_name'] %></td>
 		    <td><%= @user['email_address'] %></td>
 		</tr>
 </table>
-
-<p>Find me in app/views/users/index.html.erb</p>

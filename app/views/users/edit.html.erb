@@ -1,0 +1,14 @@
+<h1>Update user #<%= @user['id'] %></h1>
+
+<%= @user.errors.full_messages.first if @user.errors.any? %>
+
+<form action="/users/<%= @user['id'] %>" method="post">  
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	<input type='hidden' name="_method" value="patch">
+	<input type="text" name="user[first_name]" placeholder="first name" value=<%= @user['first_name'] %>><br>
+	<input type="text" name="user[last_name]" placeholder="last name" value=<%= @user['last_name'] %>><br>
+	<input type="text" name="user[email_address]" placeholder="email address" value=<%= @user['email_address'] %>><br>
+	<input type="password" name="user[password]" placeholder="password" /><br>
+<!-- 	<input type="password" name="passconf" placeholder="password confirm" /><br> -->
+	<input type="submit" value="Update user" />
+</form>

@@ -1,5 +1,7 @@
 <h1>Add a new user</h1>
 
+<%= @user.errors.full_messages.first if @user.errors.any? %>
+
 <form action="/users" method="post">  
 	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 	<input type="text" name="user[first_name]" placeholder="first name" /><br>
