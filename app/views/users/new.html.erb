@@ -1,14 +1,37 @@
+<%= render 'layouts/header' %>
+
 <h1>Add a new user</h1>
 
-<h2><%= @user.errors.full_messages.first if @user.errors.any? %></h2>
+<!-- ERROR VALIDATION -->
+<% if @user.errors.any? %>
+    <div id="error_explanation">
+    	<h2><%= pluralize(@user.errors.count, "error") %> prohibited this post from being saved:</h2>
+    	<ul>
+    		<% @user.errors.full_messages.each do |msg| %>
+     			<li><%= msg %></li>
+    		<% end %>
+      	</ul>
+    </div>
+<% end %>
 
-<form action="/users" method="post">  
+<!-- SIMPLE FORM -->
+<%= simple_form_for @user do |f| %>
+	<%= f.input :first_name %>
+	<%= f.input :last_name %>
+	<%= f.input :email_address %>
+	<%= f.input :password %>
+	<%= f.button :submit %>
+<% end %>
+
+
+<!-- REGULAR HTML FORM -->
+<!-- <form action="/users" method="post">  
 	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 	<input type="text" name="user[first_name]" placeholder="first name" /><br>
 	<input type="text" name="user[last_name]" placeholder="last name" /><br>
 	<input type="text" name="user[email_address]" placeholder="email address" /><br>
 	<input type="password" name="user[password]" placeholder="password" /><br>
 	<input type="submit" value="Submit new user" />
-</form>
+</form> -->
 
 <p>Find me in app/views/users/new.html.erb</p>
