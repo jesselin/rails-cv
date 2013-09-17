@@ -1,11 +1,15 @@
 <h1>Display all users</h1>
 
+<h2><i><%=flash[:notice] %></i></h2>
+
 <table class="users">
 	<tr>
 		<th>ID</th>
 		<th>First Name</th>
 		<th>Last Name</th>
 		<th>Email Address</th>
+		<th>Edit</th>
+		<th>Delete</th>
 	</tr>
 	<% @users.each do |user| %>
 		<tr>
@@ -13,6 +17,14 @@
 		    <td><%= user['first_name'] %></td>
 		    <td><%= user['last_name'] %></td>
 		    <td><%= user['email_address'] %></td>
+		    <td><a href="/users/<%= user['id'] %>/edit"><button type="button">Edit</button></a></td>
+		    <td>
+		    	<form action="/users/<%= user['id'] %>" method="post">  
+					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+					<input type='hidden' name="_method" value="delete">
+					<input type="submit" value="Delete" />
+				</form>
+		    </td>
 		</tr>
 	<% end %>     
 </table>

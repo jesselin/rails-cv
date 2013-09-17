@@ -36,8 +36,13 @@ class UsersController < ApplicationController
 
   end
 
-  def destroy
-    # @user = User.find(params[:id]).destroy
+  def destroy    
+    if set_user.destroy
+      redirect_to users_path, notice: 'User deleted.'
+    else
+      render action: 'index'
+    end
+
   end
 
   private
