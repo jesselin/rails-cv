@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Users</title>
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rails Bootstrap" %>">
   <%= stylesheet_link_tag    "users", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "users", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
